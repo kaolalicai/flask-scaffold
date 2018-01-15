@@ -2,6 +2,9 @@
 ------
 update from Flask Skeleton
 添加了Dockerfile 以及 log
+
+#### 财略镜像库 镜像
+r.p.cailve.cn/flask-docker-scaffold:basic
 ------
 #### 目录结构
 
@@ -44,11 +47,15 @@ python manage.py server  # 本地运行 server
 make test # 运行测试
 ```
 
-####构建镜像与运行
+#### 构建镜像与运行
 
 ```
 make build # 创建flask镜像
-docker run -p 5000:5000 -v "(your_log_path):/usr/src/app/logs" -itd flask-docker-scaffold:beta # 运行容器
+docker run -p 5000:5000 -v "(your_log_path):/usr/src/app/logs" -d flask-docker-scaffold:beta # 运行容器
+
+-------
+# 或者
+docker run -p 5000:5000 -v "(your_log_path):/usr/src/app/logs" -d r.p.cailve.cn/flask-docker-scaffold:basic
 ```
 
 
