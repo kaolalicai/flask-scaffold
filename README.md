@@ -51,11 +51,17 @@ make test # 运行测试
 
 ```
 make build # 创建flask镜像
-docker run -p 5000:5000 -v "(your_log_path):/usr/src/app/logs" -d flask-docker-scaffold:beta # 运行容器
+docker run -p 5000:5000 -v "(your_log_path):/usr/src/app/logs" -id flask-docker-scaffold:beta # 运行容器
 
 -------
 # 或者
-docker run -p 5000:5000 -v "(your_log_path):/usr/src/app/logs" -d r.p.cailve.cn/flask-docker-scaffold:basic
+docker run -p 5000:5000 -v "(your_log_path):/usr/src/app/logs" -id r.p.cailve.cn/flask-docker-scaffold:basic
+```
+
+
+#### 访问
+```
+    http://localhost:4000/
 ```
 
 
