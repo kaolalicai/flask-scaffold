@@ -24,6 +24,8 @@ def create_app(object_name):
 
     # 输出loglog
     log_path = os.path.split(os.path.split(os.path.realpath(__file__))[0])[0]+'/logs'
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
     log_name = '/logs.log'
     handler = logging.handlers.WatchedFileHandler(
         log_path+log_name
