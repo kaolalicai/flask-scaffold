@@ -13,7 +13,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-logs/
 build/
 develop-eggs/
 dist/
@@ -123,6 +122,12 @@ tags
 # pycharm file
 .idea/
 
-# machine learning file
-*.pkl
+# IDE file
+.idea/
+*.iml
+
+# pytest data
+.DS_Store
+.pytest_cache/
+
 # End of https://www.gitignore.io/api/vim

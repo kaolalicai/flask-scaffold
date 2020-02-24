@@ -3,8 +3,8 @@
 update from Flask Skeleton
 添加了Dockerfile 以及 log
 
-#### 财略镜像库 镜像
-r.p.cailve.cn/flask-docker-scaffold:basic
+
+
 ------
 #### 目录结构
 
@@ -13,7 +13,13 @@ r.p.cailve.cn/flask-docker-scaffold:basic
 ├── manage.py
 ├── README.md
 ├── requirements.txt
-├── Dockerfile
+├── docker
+│   ├── ubuntu
+│   │   ├── Dockerfile.py # Ubuntu & 安装python3
+│   ├── base
+│   │   ├── Dockerfile.py # python安装包
+│   └── base
+│       ├── Dockerfile.py # python安装包
 ├── appname
 │   ├── controllers
 │   │   ├── main.py
@@ -29,8 +35,12 @@ r.p.cailve.cn/flask-docker-scaffold:basic
 
 #### 项目依赖
 * Python3
-* Flask >= 0.12.x
-* docker >= 17.05.0-ce
+* Flask==0.12.2
+* voluptuous==0.9.3
+* gevent>=1.3.1
+* Flask-Script==2.0.5
+* pytest==3.0.5
+* gunicorn>=19.8.1
 ####使用
 
 ```
@@ -43,7 +53,7 @@ git init
 #### 运行命令
 
 ```
-python manage.py server  # 本地运行 server
+make run # 执行脚本
 make test # 运行测试
 ```
 

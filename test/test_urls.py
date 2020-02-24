@@ -8,7 +8,7 @@ class TestURLs:
         test the home page
         """
 
-        r = testapp.get('/log/write')
+        r = testapp.post('/log/write')
         print(r.__dict__)
         print(r.data)
         assert r.status_code == 200
