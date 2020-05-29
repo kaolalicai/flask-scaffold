@@ -1,14 +1,17 @@
 import pytest
 
 
-@pytest.mark.usefixtures("testapp")
+@pytest.mark.usefixtures("test_app")
 class TestURLs:
-    def test_home(self, testapp):
+    def test_home(self, test_app):
         """
         test the home page
         """
-
-        r = testapp.post('/log/write')
-        print(r.__dict__)
-        print(r.data)
+        text = b'{"test":"True"}\n'
+        r = test_app.post(
+            '/test',
+            data=text,
+            content_type='application/json'
+        )
         assert r.status_code == 200
+        assert r.data == text

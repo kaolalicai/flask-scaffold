@@ -1,10 +1,9 @@
 import logging
 import logging.handlers
 from flask import Flask, jsonify
-from voluptuous.error import Invalid
 
-from app.router import main
 from config import config
+from app.router import main
 
 
 def create_app(environment: str = None):
@@ -19,20 +18,18 @@ def create_app(environment: str = None):
     app.config.from_object(environment_config)
 
     #  自定义路由前缀
-    #  app.register_blueprint(main, url_prefix='/api/v1')
     app.register_blueprint(main)
+    #  app.register_blueprint(main, url_prefix='/api/v1')
 
     # logger config
     app.logger.setLevel(logging.DEBUG)
     app.logger.handlers.extend(logging.getLogger("flask.base").handlers)
     app.logger.handlers.extend(logging.getLogger("flask.error").handlers)
 
+    # 在这里可以配置相应的错误号码, 或者指定的Exception
     @app.errorhandler(500)
     def internal_server_error(e):
         app.log_exception(e)
-        if isinstance(e, Invalid):
-            return jsonify({"code": 44013, "data": "Params Error"}), 500
-        else:
-            return jsonify({"code": 500, "data": "Something Error"}), 500
+        return jsonify({"code": 500, "data": "Server Error"}), 500
 
     return app
